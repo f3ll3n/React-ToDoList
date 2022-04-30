@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -7,27 +9,100 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100px;
   display: flex;
-  flex-direction: column;
+  width: 100%;
   align-items: center;
-  justify-content: center;
+  background-color: #282c34;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: fixed;
+  top: 0;
 }
-
+.btn{
+  border: 1px solid #fff;
+  font-size: 23px;
+  color: #fff;
+  padding: 15px;
+  background-color: #282c34;
+  transition: .3s;  
+}
+.input form{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+}
+.input textarea{
+  border: 1px solid #fff;
+  font-size: 20px;
+  padding: 5px;
+  color: #fff;
+  height: 70px;
+  width: 55%;
+  resize: none;
+  background-color: #282c34;
+}
+.btn:hover{
+  border: 1px solid #fff;
+  font-size: 23px;
+  color: #fff;
+  padding: 15px;
+  background-color: #3c5179;
+  cursor: pointer;
+}
 .App-link {
   color: #61dafb;
 }
-
+.todoItem{
+  background-color: #fff;
+  width: 65%;
+  font-size: 20px;
+  padding: 9px;
+  justify-content: space-around;
+  margin: 10px auto;
+  border-radius: 5px;
+  position: relative;
+}
+.todo-delete{
+  position: absolute;
+  top: 5px;
+  cursor: pointer;
+  right: 20px;
+  transition: .2s;
+}
+.todo-delete:hover{
+  color: red;
+}
+.todoList{
+  padding: 100px 0 70px 0;
+  width: 100%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1350px){
+  .todoItem{
+    width: 60%;
+  }
+  .App-header,
+  .App-header .btn{
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 700px){
+  .todoItem{
+    width: 75%;
+  }
+  .App-header,
+  .App-header .btn{
+    font-size: 13px;
+  }
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
