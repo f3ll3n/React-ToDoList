@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { TodoInput } from './TodoInput';
 import { Todo } from './Todos';
 
 function App() {
-  const [todoContent, setTodoContent] = useState('');
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('items')) || []);
+  const [todosReady, setTodosReady] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(todos));
+  }, [todos])
 
   const handleOnChange = (todoContent) => {
     if (!todoContent.length) {
@@ -16,17 +20,28 @@ function App() {
       task: todoContent,
       complete: false
     }
-    setTodoContent(todoContent);
-    setTodos([
+    setTodos((todos) => [
       ...todos,
       todoItem,
     ]);
-    setTodoContent('');
   }
-
+  const completeTodo = (id) => {
+    setTodos([
+      ...todos.map((todo) => 
+        todo.id === id ? { ...todo, complete: !todo.complete } : {...todo }
+      )
+    ])
+}
   const removeTodo = (id) => {
-    console.log(id);
     setTodos([...todos.filter((todo) => todo.id !== id)])
+  }
+  
+  const setReadyTodosFilter = () => {
+    setTodosReady(
+      !todosReady
+    );
+    console.log(todosReady);
+    todosReady ? setTodos([...todos.filter((todo) => todo.complete === true)]) || localStorage.setItem('itemsSave', JSON.stringify(todos)) : setTodos(JSON.parse(localStorage.getItem('itemsSave'))) 
   }
 
   return (
@@ -38,16 +53,17 @@ function App() {
         <nav>
           <button className='btn'>Все</button>
           <button className='btn'>Только важные</button>
-          <button className='btn'>Выполненные</button>
+          <button onClick={setReadyTodosFilter} className='btn'>Выполненные</button>
         </nav>
       </header>
         <div className="todoList"> 
           {todos.map((todo) => (
             <Todo
-              className='todoItem'
               todo={todo}
+              completeTodo={completeTodo}
               removeToDo={removeTodo}
               key={todo.id}
+              complete={todo.complete}
             />
         ))}
         </div>

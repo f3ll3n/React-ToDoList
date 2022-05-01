@@ -6,7 +6,6 @@ export const TodoInput = ( {onChange} ) => {
     
     const handlerOnChange = (event) => {
         setTodoText(event.currentTarget.value)
-        
     }
 
     const handlerOnClick = (e) => {
