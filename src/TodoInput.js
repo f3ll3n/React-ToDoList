@@ -2,6 +2,7 @@ import { useState } from "react";
 
 
 export const TodoInput = ( {onChange} ) => {
+
     const [todoText, setTodoText] = useState('');
     
     const handlerOnChange = (event) => {

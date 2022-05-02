@@ -1,6 +1,5 @@
-
+//Компонент, отображающий текстовую строку, статуc
 export const Todo = ({ todo, removeToDo, completeTodo }) => {
-  
     return(
         <div className={todo.complete ? 'todoItem strike' : 'todoItem'}>
             <div className={todo.complete ? 'todo-complete_button' : 'todo-complete_button strike'}

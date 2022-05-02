@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   background-color: #282c34;
@@ -10,6 +11,7 @@
 }
 
 .App-header {
+  min-width: 360px;
   height: 100px;
   display: flex;
   width: 100%;
@@ -39,6 +41,7 @@
   margin: 0 auto;
   position: fixed;
   bottom: 0;
+  min-width: 360px;
 }
 .input textarea{
   border: 1px solid #fff;
@@ -104,6 +107,10 @@
   color: #fff;
   background-color: green;
 }
+.strike p{
+  text-decoration: line-through;
+  color: #fff;
+}
 .todo-delete{
   position: absolute;
   top: 5px;
@@ -112,29 +119,50 @@
   transition: .2s;
 }
 .todo-delete:hover{
-  color: red;
+  color: rgb(185, 0, 0);
 }
-.todoList{
+.todoList_block{
   padding: 100px 0 70px 0;
   width: 100%;
   margin: 0 auto;
 }
-@media screen and (max-width: 1350px){
+@media screen and (max-width: 1359px){
   .todoItem{
-    width: 60%;
+    width: 70%;
   }
   .App-header,
   .App-header .btn{
     font-size: 15px;
   }
 }
-@media screen and (max-width: 700px){
+@media screen and (max-width: 719px){
   .todoItem{
     width: 75%;
   }
   .App-header,
   .App-header .btn{
     font-size: 13px;
+  }
+  .todo-complete_button{
+    font-size: 15px;
+    width: 15px;
+    left: -35px;
+    
+  }
+}
+@media screen and (max-width: 461px){
+  .todoItem{
+    width: 70%;
+  }
+  .App-header,
+  .App-header .btn{
+    font-size: 11px;
+  }
+  .todo-complete_button{
+    font-size: 15px;
+    width: 15px;
+    left: -35px;
+    
   }
 }
 @keyframes App-logo-spin {
